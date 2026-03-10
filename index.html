@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="SpaceSense-Bench: A Large-Scale Multi-Modal Benchmark for Spacecraft Perception and Pose Estimation">
+  <meta name="description" content="SpaceSense-Bench is a large-scale multi-modal benchmark for spacecraft perception with 136 satellite models, synchronized RGB-depth-LiDAR sensing, dense part labels, and 6-DoF pose ground truth.">
+  <meta name="keywords" content="spacecraft perception, pose estimation, space robotics, on-orbit servicing, active debris removal, multimodal benchmark, LiDAR, semantic segmentation, depth estimation">
+  <meta name="author" content="Aodi Wu, Jianhong Zuo, Zeyuan Zhao, Xubo Luo, Ruisuo Wang, Xue Wan">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="theme-color" content="#2563eb">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="SpaceSense-Bench">
+  <meta property="og:title" content="SpaceSense-Bench: A Large-Scale Multi-Modal Benchmark for Spacecraft Perception and Pose Estimation">
+  <meta property="og:description" content="A large-scale multi-modal benchmark for spacecraft perception with 136 satellite models, synchronized RGB-depth-LiDAR sensing, dense part labels, and accurate 6-DoF pose annotations.">
+  <meta property="og:url" content="https://github.com/wuaodi/SpaceSense-Bench">
+  <meta property="og:image" content="static/images/carousel1.jpg">
+  <meta property="og:image:alt" content="SpaceSense-Bench preview image">
+
+  <meta name="citation_title" content="SpaceSense-Bench: A Large-Scale Multi-Modal Benchmark for Spacecraft Perception and Pose Estimation">
+  <meta name="citation_author" content="Wu, Aodi">
+  <meta name="citation_author" content="Zuo, Jianhong">
+  <meta name="citation_author" content="Zhao, Zeyuan">
+  <meta name="citation_author" content="Luo, Xubo">
+  <meta name="citation_author" content="Wang, Ruisuo">
+  <meta name="citation_author" content="Wan, Xue">
+  <meta name="citation_publication_date" content="2026">
+
+  <title>SpaceSense-Bench | Spacecraft Perception and Pose Estimation</title>
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "SpaceSense-Bench: A Large-Scale Multi-Modal Benchmark for Spacecraft Perception and Pose Estimation",
+    "description": "SpaceSense-Bench is a large-scale multi-modal benchmark for spacecraft perception and pose estimation, featuring 136 satellite models, synchronized RGB, depth, and 256-beam LiDAR data, dense 7-class part-level semantic labels, and 6-DoF pose annotations.",
+    "author": [
+      {"@type": "Person", "name": "Aodi Wu", "url": "https://wuaodi.github.io/"},
+      {"@type": "Person", "name": "Jianhong Zuo"},
+      {"@type": "Person", "name": "Zeyuan Zhao"},
+      {"@type": "Person", "name": "Xubo Luo", "url": "https://luoxubo.github.io/"},
+      {"@type": "Person", "name": "Ruisuo Wang"},
+      {"@type": "Person", "name": "Xue Wan", "url": "https://people.ucas.edu.cn/~wanxue"}
+    ],
+    "datePublished": "2026",
+    "url": "https://github.com/wuaodi/SpaceSense-Bench",
+    "image": "static/images/carousel1.jpg",
+    "keywords": ["spacecraft perception", "pose estimation", "multimodal benchmark", "space robotics", "semantic segmentation"],
+    "isAccessibleForFree": true,
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://github.com/wuaodi/SpaceSense-Bench"
+    }
+  }
+  </script>
+</head>
+<body>
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">SpaceSense-Bench: A Large-Scale Multi-Modal Benchmark for Spacecraft Perception and Pose Estimation</h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><a href="https://wuaodi.github.io/" target="_blank" rel="noopener noreferrer">Aodi Wu</a><sup>1,2</sup>,</span>
+                <span class="author-block">Jianhong Zuo<sup>3</sup>,</span>
+                <span class="author-block">Zeyuan Zhao<sup>1,2</sup>,</span>
+                <span class="author-block"><a href="https://luoxubo.github.io/" target="_blank" rel="noopener noreferrer">Xubo Luo</a><sup>1,2</sup>,</span>
+                <span class="author-block">Ruisuo Wang<sup>2</sup>,</span>
+                <span class="author-block"><a href="https://people.ucas.edu.cn/~wanxue" target="_blank" rel="noopener noreferrer">Xue Wan</a><sup>2</sup></span>
+              </div>
+              <div class="is-size-6 publication-authors">
+                <span class="author-block"><sup>1</sup> University of Chinese Academy of Sciences</span><br>
+                <span class="author-block"><sup>2</sup> Technology and Engineering Center for Space Utilization, Chinese Academy of Sciences</span><br>
+                <span class="author-block"><sup>3</sup> Nanjing University of Aeronautics and Astronautics</span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://github.com/wuaodi/SpaceSense-Bench" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fab fa-github"></i></span>
+                      <span>GitHub</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="#dataset" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-database"></i></span>
+                      <span>Dataset Overview</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="#benchmarks" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-chart-bar"></i></span>
+                      <span>Benchmarks</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="#citation" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-quote-right"></i></span>
+                      <span>Citation</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <video poster="static/images/carousel1.jpg" id="spacesense-banner" autoplay controls muted loop playsinline height="100%" preload="metadata">
+            <source src="static/videos/banner_video.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            SpaceSense-Bench provides high-fidelity simulated observations for spacecraft perception, combining synchronized RGB images, depth maps, LiDAR point clouds, dense part labels, and accurate 6-DoF poses.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light" id="abstract">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Autonomous space operations such as on-orbit servicing and active debris removal demand robust part-level semantic understanding and precise relative navigation of target spacecraft, yet acquiring large-scale real data in orbit remains prohibitively expensive. Existing synthetic datasets, moreover, suffer from limited target diversity, single-modality sensing, and incomplete ground-truth annotations. To bridge these gaps, we present <strong>SpaceSense-Bench</strong>, a large-scale multi-modal benchmark for spacecraft perception encompassing 136 satellite models with approximately 70 GB of data. Each frame provides time-synchronized 1024×1024 RGB images, millimeter-precision depth maps, and 256-beam LiDAR point clouds, together with dense 7-class part-level semantic labels at both the pixel and point level as well as accurate 6-DoF pose ground truth. The dataset is generated through a high-fidelity space simulation built in Unreal Engine 5 and a fully automated pipeline covering data acquisition, multi-stage quality control, and conversion to mainstream formats. Comprehensive benchmarks on object detection, 2D semantic segmentation, RGB-LiDAR fusion 3D point cloud segmentation, monocular depth estimation, and orientation estimation reveal two key findings: (i) perceiving small-scale components such as thrusters and omni-antennas and generalizing to entirely unseen spacecraft in a zero-shot setting remain critical bottlenecks for current methods, and (ii) scaling up the number of training satellites yields substantial performance gains on novel targets, underscoring the value of large-scale, diverse datasets for space perception research.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dataset">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <h2 class="title is-3 has-text-centered">Dataset Highlights</h2>
+            <div class="columns is-multiline">
+              <div class="column is-4-desktop is-6-tablet">
+                <div class="box has-text-centered">
+                  <p class="title is-4">136</p>
+                  <p class="subtitle is-6">Satellite models with diverse geometries and structures</p>
+                </div>
+              </div>
+              <div class="column is-4-desktop is-6-tablet">
+                <div class="box has-text-centered">
+                  <p class="title is-4">~70 GB</p>
+                  <p class="subtitle is-6">Large-scale benchmark data generated in a high-fidelity simulator</p>
+                </div>
+              </div>
+              <div class="column is-4-desktop is-6-tablet">
+                <div class="box has-text-centered">
+                  <p class="title is-4">3 Modalities</p>
+                  <p class="subtitle is-6">1024×1024 RGB, millimeter-precision depth, and 256-beam LiDAR</p>
+                </div>
+              </div>
+              <div class="column is-4-desktop is-6-tablet">
+                <div class="box has-text-centered">
+                  <p class="title is-4">7 Classes</p>
+                  <p class="subtitle is-6">Dense part-level semantic labels at both pixel and point levels</p>
+                </div>
+              </div>
+              <div class="column is-4-desktop is-6-tablet">
+                <div class="box has-text-centered">
+                  <p class="title is-4">6-DoF</p>
+                  <p class="subtitle is-6">Accurate relative pose annotations for each frame</p>
+                </div>
+              </div>
+              <div class="column is-4-desktop is-6-tablet">
+                <div class="box has-text-centered">
+                  <p class="title is-4">UE5 Pipeline</p>
+                  <p class="subtitle is-6">Automated generation, quality control, and conversion workflow</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title is-3 has-text-centered">Visual Overview</h2>
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item">
+              <img src="static/images/carousel1.jpg" alt="Example spacecraft renderings in SpaceSense-Bench" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Representative spacecraft appearances across diverse structures and viewpoints.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/carousel2.jpg" alt="Multi-modal observations in SpaceSense-Bench" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Aligned multi-modal observations support perception under challenging orbital conditions.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/carousel3.jpg" alt="Part-level annotations in SpaceSense-Bench" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">Dense part-level semantic labels are provided for both image pixels and LiDAR points.</h2>
+            </div>
+            <div class="item">
+              <img src="static/images/carousel4.jpg" alt="Benchmark tasks in SpaceSense-Bench" loading="lazy"/>
+              <h2 class="subtitle has-text-centered">The benchmark covers detection, segmentation, depth estimation, and orientation estimation.</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benchmarks">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <h2 class="title is-3 has-text-centered">Benchmark Tasks and Findings</h2>
+            <div class="content">
+              <div class="columns is-multiline">
+                <div class="column is-6">
+                  <div class="box">
+                    <h3 class="title is-5">Supported Tasks</h3>
+                    <ul>
+                      <li>Object detection</li>
+                      <li>2D semantic segmentation</li>
+                      <li>RGB-LiDAR fusion 3D point cloud segmentation</li>
+                      <li>Monocular depth estimation</li>
+                      <li>Orientation estimation</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="column is-6">
+                  <div class="box">
+                    <h3 class="title is-5">Key Findings</h3>
+                    <ul>
+                      <li>Small components such as thrusters and omni-antennas remain difficult to perceive reliably.</li>
+                      <li>Zero-shot transfer to completely unseen spacecraft is still a major open challenge.</li>
+                      <li>Increasing the number and diversity of training satellites substantially improves generalization.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Qualitative Demo</h2>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <video poster="static/images/carousel2.jpg" id="qualitative-demo" controls muted loop playsinline height="100%" preload="metadata">
+                <source src="static/videos/carousel1.mp4" type="video/mp4">
+              </video>
+              <p class="subtitle has-text-centered" style="margin-top: 1rem;">
+                A short qualitative demo illustrating the rendering quality and data diversity of SpaceSense-Bench.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="status">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3 has-text-centered">Release Status</h2>
+            <div class="box content has-text-justified">
+              <p>
+                The repository presently hosts the project page and summary information. Links for the paper, benchmark data, and accompanying resources will be updated after the review process.
+              </p>
+              <p>
+                For updates, please watch the <a href="https://github.com/wuaodi/SpaceSense-Bench" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="citation">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@article{wu2026spacesensebench,
+  title={SpaceSense-Bench: A Large-Scale Multi-Modal Benchmark for Spacecraft Perception and Pose Estimation},
+  author={Wu, Aodi and Zuo, Jianhong and Zhao, Zeyuan and Luo, Xubo and Wang, Ruisuo and Wan, Xue},
+  year={2026},
+  url={https://github.com/wuaodi/SpaceSense-Bench}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page is built on top of the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a>, adapted from the <a href="https://nerfies.github.io" target="_blank" rel="noopener noreferrer">Nerfies</a> project page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
